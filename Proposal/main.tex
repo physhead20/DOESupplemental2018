@@ -1,0 +1,227 @@
+\pdfoutput=1
+\RequirePackage{ifpdf}
+\documentclass[11pt,english]{article}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{multirow}
+\usepackage{color}
+\usepackage{enumitem}
+\usepackage{hyperref}
+%\usepackage{multirow}
+%\usepackage{slashbox}
+\usepackage{subfigure}
+%\usepackage{textcomp}
+\usepackage{babel}
+%\usepackage{AMSsymb}
+%\usepackage{charter}
+\usepackage[final]{pdfpages}
+\usepackage{amssymb}
+%\usepackage{url}
+%\usepackage[latin9]{inputenc}
+%\usepackage[T1]{fontenc}
+%\usepackage{cite}
+
+%
+%\usepackage[T1]{fontenc}
+%\usepackage[latin9]{inputenc}
+
+%%% Need input files here %%%
+%\input{epsf}
+%\input{physics_defs.tex}
+%\input{boxedeps.tex}
+\input d0_style.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\SetRokickiEPSFSpecial      % Set up BoxedEPS to work with DVIPS driver
+%\ShowDisplacementBoxes      % Turn on displacement boxes
+%%\nofiles
+%%\HideDisplacementBoxes      % Turn off displacement boxes
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+
+%%%%%%%%%%%%%%%%%%%%%% MACRO DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Set the margins
+\oddsidemargin 0in
+\evensidemargin 0in
+\topmargin=-10mm
+\textheight 9in
+\textwidth 6.5in
+\columnsep 0.5in
+\columnseprule 0pt
+\sloppy \raggedbottom
+%\baselineskip=10pt
+\parindent=10mm
+\parsep=0pt
+
+\setcounter{secnumdepth}{3}
+\def\overhead#1{\part{#1}}
+%\def\onehead#1{\chapter{#1}}
+\def\onehead#1{\section{#1}}
+\def\twohead#1{\subsection{#1}}
+\def\threehead#1{\subsubsection{#1}}
+\def\fourhead#1{\paragraph{#1}}
+\def\fivehead#1{\subparagraph{#1}}
+\def\sixhead#1{\subparagraph*{#1}}
+\def\centerhead#1{
+	\begin{center}
+	\Large\textbf{#1}
+	\end{center}}
+
+\newcommand{\rowgroup}[1]{\hspace{-1em}#1}
+
+%% %%%%%%%%%%%%%%%%%%%%%% Bibliography  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% \def\thebibliography#1{
+%%   \fivehead{  {} }\list
+%%   \twohead{  {BIBLIOGRAPHY} }\list
+%%   {\arabic{enumi}.}{\settowidth\labelwidth{#1.}
+%%    \leftmargin\labelwidth
+%%   \advance\leftmargin\labelsep\itemsep0pt \frenchspacing
+%%   \usecounter{enumi}}
+%%   \def\newblock{\hskip .11em plus .33em minus -.07em}
+%%   \sloppy
+%%   \sfcode`\.=1000\relax}
+%% \let\endthebibliography=\endlist
+
+%\usepackage[
+%  backend=bibtex8,
+%5  style=ieee
+%]{biblatex}
+
+%\bibliography{biblio}
+ %\usepackage[
+%% %  backend=bibtex8,
+%% %  style=ieee
+%% %]{biblatex}
+%% %\bibliography{biblio}
+
+%\bibliographystyle{unsrt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%% Main Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%\vfill\eject
+%%\pagestyle{plain}
+\pagestyle{empty}
+\baselineskip=23pt
+\normalsize
+%%
+
+\noindent
+
+%%%% Abstract %%%%%
+%\input{./abstract/abstract.tex}
+%\newpage
+
+%%% Cover Page %%%
+\input{./CoverPage/CoverPage.tex}
+\newpage
+
+%%% Cover Page Supplement %%%%
+\centerhead{Cover Page Supplement}
+\input{./CoverPageSupplement/cover_page_supplement.tex}
+\newpage
+
+%%% Start the page counting here %%%
+\pagestyle{plain}
+\setcounter{page}{1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               Project Narrative               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\overhead{Research at the Intensity Frontier}
+
+%%%%% Overview of IF Research %%%%%%%%%%%%%%%
+\input{./ProjectNarrative/narrative.tex}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                APPENDICIES                              
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%% Biographical Sketches %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+%\centerhead{Appendix 1}
+%\centerhead{Biographical Sketch}
+%\centerhead{Senior Investigators}
+%\newpage
+
+%%% Jonathan Asaadi %%%%
+\includepdf[pages=-]{./Bio/AsaadiCV.pdf}
+
+%%% Jae Yu %%%
+%\input{./Bio/JY_bio.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%% Current and Pending %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+
+%%% Jonathan Asaadi %%%
+\includepdf[pages=-]{./CurrentAndPending/AsaadiPendingSupport.pdf}
+
+%%% Jae Yu %%%
+%\includepdf[pages=-]{./CurrentAndPendingSupport/CNP-Yu-DOE-092016.pdf}
+
+
+
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%% Bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\printbibliography[heading=none,maxnames=99]
+\centerhead{Appendix 03:  Bibliography and References Cited}
+
+\bibliography{biblio} {}
+\bibliographystyle{ieeetr}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%% Facilities %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\centerhead{Appendix 04: Facilities and Other Resources}
+\input{./Facilities/Facilities.tex}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%% Equipment %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\centerhead{Appendix 05: Equipment}
+
+\input{./Equipment/Equipment.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%% Budget Justifications %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\centerhead{Appendix 7}
+\centerhead{Additional Budget Requirements}
+\newpage
+
+%######################################################################
+%############## Intensity Frontier Budget Justification 
+%######################################################################
+\includepdf[pages=-]{./BudgetJustification/HEP-BudgetForm_IF_2018-main.pdf}
+\includepdf[pages=-]{./BudgetJustification/HEP-BudgetForm_IF_2019-main.pdf}
+\input{./BudgetJustification/budget-justification-if.tex}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%% Data Management Plan %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\includepdf[pages=-]{./DataManagement/IF_DataManagement.pdf}
+
+
+
+\newpage
+\centerhead{Appendix 9}
+\centerhead{Other Attachments}
+\newpage
+
+%\includepdf[pages=-]{./Brandt/Incom.pdf}
+%\includepdf[pages=-]{./Brandt/ANL.pdf}
+
+\end{document}
